@@ -1,3 +1,8 @@
+from connect_gmail import login_to_gmail, send_email
+credentials = login_to_gmail()
+
+if credentials:
+    send_email(credentials, to="example@email.com", subject="Test Subject", message="Hi there, this is a test.")
 import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
