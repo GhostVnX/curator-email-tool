@@ -15,12 +15,16 @@ if 'authenticated' not in st.session_state:
     st.session_state.authenticated = False
 
 if not st.session_state.authenticated:
-if not st.session_state.authenticated:
     password = st.text_input("Enter Dashboard Password", type="password")
-    if password and password == DASHBOARD_PASSWORD:
-        st.session_state.authenticated = True
+
+    if password:
+        if password == DASHBOARD_PASSWORD:
+            st.session_state.authenticated = True
+        else:
+            st.warning("Incorrect password. Please try again.")
+            st.stop()
     else:
-        st.warning("Enter the correct password to continue.")
+        st.info("Please enter the dashboard password above.")
         st.stop()
 # === APP HEADER ===
 st.set_page_config(page_title="Ghost VnX Email Dashboard", layout="wide")
